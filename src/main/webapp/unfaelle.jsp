@@ -1,10 +1,9 @@
 <html>
 <head>
   <title>Ernst-Reuter-Platz Unf&aumllle</title>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
+ 
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
-
+ 
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <style>
@@ -27,11 +26,11 @@ var service;
 var infowindow;
 var berlin;
 function initialize() {
-  berlin = new google.maps.LatLng(52.539614, 13.403106);
+  berlin = new google.maps.LatLng(52.512061800000, 13.321974500000);
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: berlin,
-      zoom: 12
+      zoom: 5
     });
 
  <%@ page import = "java.sql.*" %>
@@ -122,21 +121,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <h1>Unf&aumllle am Ernst-Reuter-Platz</h1>
   <h3>by Viktor Stoitschev, Jakob und Mandy</h3>
 
- 
   
     <div id="map-canvas"></div>
-    <div id="results">
-      <h2>Results</h2>
-      <ul id="places"></ul>
-      <button id="more">More results</button>
-    </div>
-	<form action="unfaelle.jsp">
-  <div>
-    <input type="hidden">
-    <input type="submit">
-  </div>
-   
- 
+    
  
  </body>
  <html>
