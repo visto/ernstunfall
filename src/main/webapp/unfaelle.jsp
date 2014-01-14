@@ -1,14 +1,38 @@
 <html>
 <head>
-  <title>Book Query</title>
+  <title>Ernst-Reuter-Platz Unf&aumllle</title>
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css" />
   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
-  
-</head>
-<body>
-  <h1>Unfälle am Ernst-Reuter-Platz</h1>
-  <h3>by Viktor Stoitschev, Jakob und Mandy</h3>
+
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta charset="utf-8">
+  <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['linechart']});
+    </script>
+    <script type="text/javascript">
+    var visualization;
+var map;
+var service;
+var infowindow;
+var berlin;
+function initialize() {
+  berlin = new google.maps.LatLng(52.539614, 13.403106);
+
+  map = new google.maps.Map(document.getElementById('map-canvas'), {
+      center: berlin,
+      zoom: 12
+    });
 
  <%@ page import = "java.sql.*" %>
   <%
@@ -46,7 +70,7 @@
         Double latitude = rset.getDouble("GPS_Lat");
 		Double longitude = rset.getDouble("GPS_Long");
 		
-		out.println(String.valueOf(latitude) + ", " + String.valueOf(longitude));
+		out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
 		}
 	  
 	  
@@ -57,6 +81,62 @@
       conn.close();
 	  
   %>
+  
+	  
+ 
+}
+
+
+function displayAccident(lat, lon) {
+  
+
+      var place = new google.maps.LatLng(lat,lon);
+      createMarker(place);
+
+ 
+}
+
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
+}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+
+    </script>
+ 
+  
+  
+</head>
+<body>
+  <h1>Unf&aumllle am Ernst-Reuter-Platz</h1>
+  <h3>by Viktor Stoitschev, Jakob und Mandy</h3>
+
+ 
+  
+    <div id="map-canvas"></div>
+    <div id="results">
+      <h2>Results</h2>
+      <ul id="places"></ul>
+      <button id="more">More results</button>
+    </div>
+	<form action="unfaelle.jsp">
+  <div>
+    <input type="hidden">
+    <input type="submit">
+  </div>
+   
+ 
  
  </body>
  <html>
