@@ -43,10 +43,10 @@
 			ResultSet rset = stmt.executeQuery(sqlStr);
 
 	      while (rset.next()) {
-        Double lat = rset.getDouble("GPS_Lat");
-		Double long = rset.getDouble("GPS_Long");
+        Double latitude = rset.getDouble("GPS_Lat");
+		Double longitude = rset.getDouble("GPS_Long");
 		
-		out.println(String.valueOf(lat) + ", " + String.valueOf(long));
+		out.println(String.valueOf(latitude) + ", " + String.valueOf(longitude));
 		}
 	  
 	  
