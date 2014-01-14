@@ -30,7 +30,7 @@ function initialize() {
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: berlin,
-      zoom: 5
+      zoom: 14
     });
 
  <%@ page import = "java.sql.*" %>
@@ -89,17 +89,18 @@ function initialize() {
 function displayAccident(lat, lon) {
   
 
-      var place = new google.maps.LatLng(lat,lon);
-      createMarker(place);
+      var placeLatlng  = new google.maps.LatLng(lat,lon);
+      createMarker(placeLatlng);
 
  
 }
 
-function createMarker(place) {
-  var placeLoc = place.geometry.location;
+function createMarker(placeLatlng) {
+
   var marker = new google.maps.Marker({
-    map: map,
-    position: place.geometry.location
+      position: placeLatlng,
+      map: map,
+      title: 'Hello World!'
   });
 
   google.maps.event.addListener(marker, 'click', function() {
