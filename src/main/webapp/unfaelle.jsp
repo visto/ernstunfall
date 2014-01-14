@@ -43,8 +43,8 @@
 			ResultSet rset = stmt.executeQuery(sqlStr);
 
 	      while (rset.next()) {
-        Double lat = rset.getInt("GPS_Lat");
-		Double long = rset.getInt("GPS_Long");
+        Double lat = rset.getDouble("GPS_Lat");
+		Double long = rset.getDouble("GPS_Long");
 		
 		out.println(String.valueOf(lat) + ", " + String.valueOf(long));
 		}
