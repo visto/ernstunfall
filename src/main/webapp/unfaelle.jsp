@@ -149,7 +149,7 @@ function updateMapAccordingToTimeRange(value){
 	    $.ajax({
             url: "timeRangeRequest.jsp?range="+value,
             success: function(data){
-                alert(data)
+                eval(data);
              }
           });
 		
