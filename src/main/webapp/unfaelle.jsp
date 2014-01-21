@@ -186,7 +186,7 @@ function updateMapAccordingToTimeRange(value){
       }
     });
     
-   $( "#amount" ).val("6:00-7:59" );
+   $( "#amount" ).val("6:00 - 7:59" );
   });
   
   </script> 
