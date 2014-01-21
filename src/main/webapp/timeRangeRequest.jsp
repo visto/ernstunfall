@@ -1,6 +1,3 @@
-<html>
-<head>
-<body>
  <%@ page import = "java.sql.*" %>
  <%@ page import = "de.tub.openbigdata.conn.*" %>
  <% 
@@ -13,17 +10,10 @@
         Double latitude = rset.getDouble("GPS_Lat");
 		Double longitude = rset.getDouble("GPS_Long");
 
-		out.println("hideRestOfMarkers("");");
+		out.println("hideRestOfMarkers('');");
 		out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
  
  
 }
- 
- 
   
- 
  %>
-</body>
-</head>
-
-</html>

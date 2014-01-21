@@ -31,7 +31,7 @@ public class QuerySubmitter {
             } catch (ClassNotFoundException cnfe) {
                 cnfe.getMessage();
             }
-	 String url = "";
+			String url = "";
   
                 url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
                 try {
@@ -99,8 +99,7 @@ public class QuerySubmitter {
 
     
     public ResultSet getAccidentsForTimeRange(String rangeString){
-    	
-    	
+    	    	
     	String[] range = rangeString.split(" - ");
     	String begin = range[0];
     	String end = range[1];
