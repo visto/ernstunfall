@@ -102,7 +102,7 @@ function initialize() {
 function hideRestOfMarkers(markersToDisplay){
 
 	 for(var i = 0; i < markersArray.length; i++){
-		markersArray[0].setVisible(false);
+		markersArray[i].setVisible(false);
 	 }
 	 markersArray = [];
 	 
