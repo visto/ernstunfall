@@ -6,7 +6,7 @@
  <% 
  QuerySubmitter queryMan = new QuerySubmitter();
  ResultSet rset = queryMan.getAccidentsForTimeRange(request.getParameter("range"));
- 
+ String result;
  while(rset.next()){
 
 result=rset.getString(0);
