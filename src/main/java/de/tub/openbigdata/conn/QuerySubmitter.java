@@ -105,7 +105,7 @@ public class QuerySubmitter {
     	String begin = range[0];
     	String end = range[1];
     	
-    	String sqlStr = "SELECT * FROM unfaelle WHERE Uhrzeit 2 > '" + begin + "' AND Uhrzeit2 < '" + end + "'";
+    	String sqlStr = "SELECT * FROM unfaelle WHERE Uhrzeit2 > '" + begin + "' AND Uhrzeit2 < '" + end + "'";
     	return submitQuery(sqlStr);
     	
     	
