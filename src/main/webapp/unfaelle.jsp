@@ -174,7 +174,7 @@ function updateMapAccordingToTimeRange(value){
 			updateMapAccordingToTimeRange("8:00 - 10:29");			
 		  break;
 		case 4:
-			 updateMapAccordingToTimeRange("10:30 - 12.59");
+			 updateMapAccordingToTimeRange("10:30 - 12:59");
 		  break;
 		case 5:
 			updateMapAccordingToTimeRange( "13:00 - 15:29");
