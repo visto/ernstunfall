@@ -6,14 +6,20 @@
  <% 
  QuerySubmitter queryMan = new QuerySubmitter();
  ResultSet rset = queryMan.getAccidentsForTimeRange(request.getParameter("range"));
- String result;
+ 
  while(rset.next()){
 
-result=rset.getString(0);
 
+        Double latitude = rset.getDouble("GPS_Lat");
+		Double longitude = rset.getDouble("GPS_Long");
+		
+		out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
+ 
+ 
 }
  
- out.println(result);
+ 
+  
  
  %>
 </body>

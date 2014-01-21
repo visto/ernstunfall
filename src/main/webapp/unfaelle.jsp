@@ -99,6 +99,15 @@ function initialize() {
 }
 
 
+function hideRestOfMarkers(markersToDisplay){
+
+	 for(var i = 0; i < markersArray.length; i++){
+		markersArray[0].setVisible(false);
+	 }
+	 markersArray = [];
+	 
+}
+
 function displayAccident(lat, lon) {
   
 
@@ -108,6 +117,8 @@ function displayAccident(lat, lon) {
  
 }
 
+var markersArray = [];
+
 function createMarker(placeLatlng) {
 
   var marker = new google.maps.Marker({
@@ -115,6 +126,8 @@ function createMarker(placeLatlng) {
       map: map,
       title: 'Hello World!'
   });
+  
+  markersArray.push(marker);
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
