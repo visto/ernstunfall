@@ -33,7 +33,8 @@ function initialize() {
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: berlin,
-      zoom: 15
+      zoom: 10,
+	  mapTypeId: google.maps.MapTypeId.SATELLITE
     });
 
  <%@ page import = "java.sql.*" %>
