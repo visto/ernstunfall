@@ -81,10 +81,7 @@ public class QuerySubmitter {
 			// for debugging
 			System.out.println("Query statement is " + queryString);
 			rset = stmt.executeQuery(queryString);
-			
-			
-			
-			rset.close();
+					
 			stmt.close();
 			conn.close();
 			
