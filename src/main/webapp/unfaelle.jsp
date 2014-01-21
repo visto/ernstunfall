@@ -33,7 +33,7 @@ function initialize() {
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: berlin,
-      zoom: 10,
+      zoom: 17,
 	  mapTypeId: google.maps.MapTypeId.SATELLITE
     });
 
