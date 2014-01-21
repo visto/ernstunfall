@@ -96,10 +96,6 @@ function initialize() {
 	  
   %>
   
-  $(function() {
-    $( "#slider" ).slider();
-  });
- 
 }
 
 
@@ -128,18 +124,89 @@ function createMarker(placeLatlng) {
 
 
 google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+  <script>
 
 
-    </script>
- 
+function updateMapAccordingToTimeRange(value){
+
+	 $( "#amount" ).val(value);
+	 
+	    $.ajax({
+            url: "timeRangeRequest.jsp?range="+value,
+            success: function(data){
+                alert(data)
+             }
+          });
+		
+}
+  
+  $(function() {
+    $( "#slider-range-max" ).slider({
+      range: "max",
+      min: 1,
+      max: 8,
+      value: 2,
+      slide: function( event, ui ) {
+	  switch(ui.value)
+		{
+		case 1:
+		  	updateMapAccordingToTimeRange("0:00 - 5:59");
+		  	break;
+		case 2:
+		  	updateMapAccordingToTimeRange("6:00 - 7:59");
+		  break;
+		case 3:
+			updateMapAccordingToTimeRange("8:00 - 10:29");			
+		  break;
+		case 4:
+			 updateMapAccordingToTimeRange("10:30 - 12.59");
+		  break;
+		case 5:
+			updateMapAccordingToTimeRange( "13:00 - 15:29");
+		  	break;
+		case 6:
+			updateMapAccordingToTimeRange("15:30 - 17:59");
+		  break;
+		case 7:
+			updateMapAccordingToTimeRange( "18:00 - 20:29" );
+		  break;
+		case 8:
+			updateMapAccordingToTimeRange( "20:30 - 23:59" );
+		  break;
+  
+		default:
+		  break;
+		}
+		
+		
+			
+	          
+      }
+    });
+    
+   $( "#amount" ).val("6:00-7:59" );
+  });
+  
+  </script> 
+
+
+
   
   
 </head>
 <body>
   <h1>Unf&aumllle am Ernst-Reuter-Platz</h1>
   <h3>by Viktor Stoitschev, Jakob und Mandy</h3>
-	<div id="slider"></div>
   
+<p>
+  <label for="amount">Time Range:</label>
+  <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+</p> 
+<div style="width: 200px">
+<div id="slider-range-max"></div>
+</div>  
     <div id="map-canvas"></div>
     
  
