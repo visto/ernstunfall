@@ -9,7 +9,7 @@
  
  while(rs.next()){
 
-result=rs.getString(0);
+result=rset.getString(0);
 
 }
  
