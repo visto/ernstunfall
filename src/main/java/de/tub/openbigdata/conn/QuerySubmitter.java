@@ -83,7 +83,7 @@ public class QuerySubmitter {
 			rset = stmt.executeQuery(queryString);
 					
 			//stmt.close();
-			conn.close();
+			//conn.close();
 			
 //		
 		} catch (SQLException e) {
