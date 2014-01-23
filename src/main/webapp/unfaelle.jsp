@@ -157,13 +157,17 @@ function filterAccidents(){
 
 	 
 	    $.ajax({
-            url: "filteredRequest.jsp?range="+$( "#amount" ).val()+"&year="+ $( "#selectable").find($(".ui-selected")).html() ,
+            url: "filteredRequest.jsp?range="+$( "#amount" ).val()+"&years="+ $( "#selectable").find($(".ui-selected")).map(function() {return $(this).text();}).toArray().join("_"); ,
             success: function(data){
                 eval(data);
              }
           });
 		
 }
+  
+  
+
+  
   
   $(function() {
     $( "#slider-range-max" ).slider({
@@ -241,7 +245,7 @@ function filterAccidents(){
 <!--   <h3>by Viktor Stoitschev, Jakob und Mandy</h3> -->
   
 
-<table>
+<table style="float:left;">
 
 <tr>
 <td>
@@ -252,9 +256,6 @@ function filterAccidents(){
 <div style="width: 200px">
 <div id="slider-range-max"></div>
 </div>
-</td>
-<td>
-<div id="map-canvas"></div>
 </td>
 </tr>
 
@@ -268,10 +269,8 @@ function filterAccidents(){
 </ol>   
 </td>
 </tr>
-
-
-
 </table>
+<div id="map-canvas"></div>
 </body>
 </html>
   

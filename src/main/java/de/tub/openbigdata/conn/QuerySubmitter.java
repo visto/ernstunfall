@@ -118,14 +118,20 @@ public class QuerySubmitter {
 
     
     
-    public ResultSet getFilteredAccidents(String rangeString, String year){
+    public ResultSet getFilteredAccidents(String rangeString, String years){
     	
     	String[] range = rangeString.split(" - ");
     	String begin = range[0];
     	String end = range[1];
     	
+    	String[] yearsArr = years.split("_");
+    	
+    	
     	String sqlStr = "SELECT * FROM unfaelle WHERE Uhrzeit2 > '" + begin + "' AND Uhrzeit2 < '" + end + "'";
-    	sqlStr+= " AND YEAR(Datum)='"+ year +"'";
+    	
+    	for (int i = 0; i < yearsArr.length; i++) {
+    		sqlStr+= " AND YEAR(Datum)='"+ yearsArr[i] +"'";
+		}
     	
     	return submitQuery(sqlStr);
     	
