@@ -135,7 +135,9 @@ public class QuerySubmitter {
     			sqlStr+= " AND (YEAR(Datum)='"+ yearsArr[i] +"'";
 				if(yearsArr.length == 1) sqlStr += ")";
     		} else {
-    			sqlStr+= " OR YEAR(Datum)='"+ yearsArr[i] +"')";
+    			sqlStr+= " OR YEAR(Datum)='"+ yearsArr[i] +"'";
+				
+				if(i == (yearsArr.length - 1)) sqlStr += ")";
 			}
 		}
     	
