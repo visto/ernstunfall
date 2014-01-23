@@ -157,7 +157,7 @@ function filterAccidents(){
 
 	 
 	    $.ajax({
-            url: "filteredRequest.jsp?range="+$( "#amount" ).val()+"&year="+ $( "#selectable" ).val() ,
+            url: "filteredRequest.jsp?range="+$( "#amount" ).val()+"&year="+ $( "#selectable").find($(".ui-selected")).html() ,
             success: function(data){
                 eval(data);
              }
