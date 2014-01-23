@@ -180,27 +180,35 @@ function filterAccidents(){
 		{
 		case 1:
 			$( "#amount" ).val("0:00 - 5:59");
+			filterAccidents();
 		  	break;
 		case 2:
 			$( "#amount" ).val("6:00 - 7:59");
+			filterAccidents();
 		  break;
 		case 3:
-			$( "#amount" ).val("8:00 - 10:29");			
+			$( "#amount" ).val("8:00 - 10:29");
+			filterAccidents();
 		  break;
 		case 4:
 			$( "#amount" ).val("10:30 - 12:59");
+			filterAccidents();
 		  break;
 		case 5:
 			$( "#amount" ).val( "13:00 - 15:29");
+			filterAccidents();
 		  	break;
 		case 6:
 			$( "#amount" ).val("15:30 - 17:59");
+			filterAccidents();
 		  break;
 		case 7:
 			$( "#amount" ).val( "18:00 - 20:29" );
+			filterAccidents();
 		  break;
 		case 8:
 			$( "#amount" ).val( "20:30 - 23:59" );
+			filterAccidents();
 		  break;
   
 		default:
@@ -261,6 +269,7 @@ function filterAccidents(){
 
 <tr>
 <td>
+<label for="amount">Jahr:</label>
  <ol id="selectable">
   <li class="ui-widget-content">2009</li>
   <li class="ui-widget-content">2010</li>
