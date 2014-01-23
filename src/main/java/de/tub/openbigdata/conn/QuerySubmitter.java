@@ -106,5 +106,34 @@ public class QuerySubmitter {
     	
     	
     }
+    
+    
+    public ResultSet getAccidentsForYear(String year){
 
+    	String sqlStr = "SELECT * FROM unfaelle WHERE  YEAR(Datum)='"+ year +"'";
+    	return submitQuery(sqlStr);
+
+
+}
+
+    
+    
+    public ResultSet getFilteredAccidents(String rangeString, String year){
+    	
+    	String[] range = rangeString.split(" - ");
+    	String begin = range[0];
+    	String end = range[1];
+    	
+    	String sqlStr = "SELECT * FROM unfaelle WHERE Uhrzeit2 > '" + begin + "' AND Uhrzeit2 < '" + end + "'";
+    	sqlStr+= " AND YEAR(Datum)='"+ year +"'";
+    	
+    	return submitQuery(sqlStr);
+    	
+    	
+    }
+    
+    
+    
+    
+    
 }

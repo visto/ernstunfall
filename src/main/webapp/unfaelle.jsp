@@ -12,9 +12,19 @@
   <style>
       html, body, #map-canvas {
         height: 100%;
-        margin: 0px;
-        padding: 0px
+        margin: 20px;
+        padding: 20px;
+       	font-family: "Trebuchet MS", "Helvetica", "Arial",  "Verdana", "sans-serif";
+		font-size: 100%;
       }
+      
+      
+	  #feedback { font-size: 1.4em; }
+	  #selectable .ui-selecting { background: #FECA40; }
+	  #selectable .ui-selected { background: #F39814; color: white; }
+	  #selectable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
+	  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+      
     </style>
 
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
@@ -143,12 +153,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <script>
 
 
-function updateMapAccordingToTimeRange(value){
+function filterAccidents(){
 
-	 $( "#amount" ).val(value);
 	 
 	    $.ajax({
-            url: "timeRangeRequest.jsp?range="+value,
+            url: "filteredRequest.jsp?range="+$( "#amount" ).val()+"&year="+ $( "#selectable" ).val() ,
             success: function(data){
                 eval(data);
              }
@@ -166,31 +175,32 @@ function updateMapAccordingToTimeRange(value){
 	  switch(ui.value)
 		{
 		case 1:
-		  	updateMapAccordingToTimeRange("0:00 - 5:59");
+			$( "#amount" ).val("0:00 - 5:59");
 		  	break;
 		case 2:
-		  	updateMapAccordingToTimeRange("6:00 - 7:59");
+			$( "#amount" ).val("6:00 - 7:59");
 		  break;
 		case 3:
-			updateMapAccordingToTimeRange("8:00 - 10:29");			
+			$( "#amount" ).val("8:00 - 10:29");			
 		  break;
 		case 4:
-			 updateMapAccordingToTimeRange("10:30 - 12:59");
+			$( "#amount" ).val("10:30 - 12:59");
 		  break;
 		case 5:
-			updateMapAccordingToTimeRange( "13:00 - 15:29");
+			$( "#amount" ).val( "13:00 - 15:29");
 		  	break;
 		case 6:
-			updateMapAccordingToTimeRange("15:30 - 17:59");
+			$( "#amount" ).val("15:30 - 17:59");
 		  break;
 		case 7:
-			updateMapAccordingToTimeRange( "18:00 - 20:29" );
+			$( "#amount" ).val( "18:00 - 20:29" );
 		  break;
 		case 8:
-			updateMapAccordingToTimeRange( "20:30 - 23:59" );
+			$( "#amount" ).val( "20:30 - 23:59" );
 		  break;
   
 		default:
+			filterAccidents();
 		  break;
 		}
 		
@@ -203,6 +213,22 @@ function updateMapAccordingToTimeRange(value){
    $( "#amount" ).val("6:00 - 7:59" );
   });
   
+  $(function() {
+	    $( "#selectable" ).selectable({
+	    	  selected: function( event, ui ) {
+	    		  
+	    		  filterAccidents();
+	    		          
+	    	      }
+	    		  
+	    		  
+	    		  
+	    });
+	});
+  
+  
+  
+  
   </script> 
 
 
@@ -212,19 +238,41 @@ function updateMapAccordingToTimeRange(value){
 </head>
 <body>
   <h1>Unf&aumllle am Ernst-Reuter-Platz</h1>
-  <h3>by Viktor Stoitschev, Jakob und Mandy</h3>
+<!--   <h3>by Viktor Stoitschev, Jakob und Mandy</h3> -->
   
+
+<table>
+
+<tr>
+<td>
 <p>
-  <label for="amount">Time Range:</label>
+  <label for="amount">Uhrzeit:</label>
   <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
 </p> 
 <div style="width: 200px">
 <div id="slider-range-max"></div>
-</div>  
-    <div id="map-canvas"></div>
-    
- 
- </body>
- <html>
+</div>
+</td>
+<td>
+<div id="map-canvas"></div>
+</td>
+</tr>
+
+<tr>
+<td>
+ <ol id="selectable">
+  <li class="ui-widget-content">2009</li>
+  <li class="ui-widget-content">2010</li>
+  <li class="ui-widget-content">2011</li>
+  <li class="ui-widget-content">2012</li>
+</ol>   
+</td>
+</tr>
+
+
+
+</table>
+</body>
+</html>
   
   
