@@ -132,9 +132,9 @@ public class QuerySubmitter {
     	for (int i = 0; i < yearsArr.length; i++) {
     		
     		if(i == 0){
-    			sqlStr+= " AND YEAR(Datum)='"+ yearsArr[i] +"'";
+    			sqlStr+= " AND (YEAR(Datum)='"+ yearsArr[i] +"'";
     		} else {
-    			sqlStr+= " OR YEAR(Datum)='"+ yearsArr[i] +"'";
+    			sqlStr+= " OR YEAR(Datum)='"+ yearsArr[i] +"')";
 			}
 		}
     	
