@@ -130,7 +130,6 @@ public class QuerySubmitter {
     	String sqlStr = "SELECT * FROM unfaelle WHERE Uhrzeit2 > '" + begin + "' AND Uhrzeit2 < '" + end + "'";
     	
     	for (int i = 0; i < yearsArr.length; i++) {
-    		
     		if(i == 0){
     			sqlStr+= " AND (YEAR(Datum)='"+ yearsArr[i] +"'";
 				if(yearsArr.length == 1) sqlStr += ")";
