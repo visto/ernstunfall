@@ -47,34 +47,15 @@ function initialize() {
 	  mapTypeId: google.maps.MapTypeId.SATELLITE
     });
 
-  <%@ page import = "java.sql.*" %>
-  <%@ page import = "de.tub.openbigdata.conn.*" %>
-  <%
-       QuerySubmitter queryMan = new QuerySubmitter();
-       ResultSet rset = queryMan.displayAllAccidents();
-	   while (rset.next()) {
-	          Double latitude = rset.getDouble("GPS_Lat");
-	  		  Double longitude = rset.getDouble("GPS_Long"); 
-  		}
-  
-       out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
-	  
-	  //rset.close();
-      stmt.close();
-      conn.close();
-	  
-  %>
-  
 }
 
 
 function hideRestOfMarkers(markersToDisplay){
 
 	 for(var i = 0; i < markersArray.length; i++){
-		markersArray[i].setVisible(false);
+		markersArray[i].setMap(null);
 	 }
 	 markersArray = [];
-	 
 }
 
 function displayAccident(lat, lon) {
@@ -111,6 +92,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
   <script>
 
 
+
+  
 function filterAccidents(){
 
 	 
@@ -122,7 +105,20 @@ function filterAccidents(){
           });
 		
 }
-  
+
+function showAll(){
+
+    $.ajax({
+        url: "displayAll.jsp",
+        success: function(data){
+            eval(data);
+         }
+      });
+
+
+	
+}
+
   
 
   
@@ -181,6 +177,7 @@ function filterAccidents(){
     });
     
    $( "#amount" ).val("6:00 - 7:59" );
+   filterAccidents();
   });
   
   $(function() {
@@ -215,6 +212,13 @@ function filterAccidents(){
 
 <tr>
 <td>
+<p>
+  <label for="showALl">Alle Unf&aumllle:</label>
+  <BR>
+  <input type="button" value="Anzeigen" onclick="showAll()" id="showALl" style="border:0; color:#f6931f; font-weight:bold;">
+  <input type="button" value="Verstecken" onclick="hideRestOfMarkers('')" id="showALl" style="border:0; color:#f6931f; font-weight:bold;">	
+</p>
+
 <p>
   <label for="amount">Uhrzeit:</label>
   <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
