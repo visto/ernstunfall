@@ -47,59 +47,17 @@ function initialize() {
 	  mapTypeId: google.maps.MapTypeId.SATELLITE
     });
 
- <%@ page import = "java.sql.*" %>
+  <%@ page import = "java.sql.*" %>
+  <%@ page import = "de.tub.openbigdata.conn.*" %>
   <%
+       QuerySubmitter queryMan = new QuerySubmitter();
+       ResultSet rset = queryMan.displayAllAccidents();
+	   while (rset.next()) {
+	          Double latitude = rset.getDouble("GPS_Lat");
+	  		  Double longitude = rset.getDouble("GPS_Long"); 
+  		}
   
- 	String MYSQL_USERNAME = System.getenv("OPENSHIFT_MYSQL_DB_USERNAME");
-    String MYSQL_PASSWORD = System.getenv("OPENSHIFT_MYSQL_DB_PASSWORD");
-    String MYSQL_DATABASE_HOST = System.getenv("OPENSHIFT_MYSQL_DB_HOST");
-    String MYSQL_DATABASE_PORT = System.getenv("OPENSHIFT_MYSQL_DB_PORT");
-    String MYSQL_DATABASE_NAME = System.getenv( "OPENSHIFT_APP_NAME");
-    String MYSQL_DATABASE_DRIVER = "com.mysql.jdbc.Driver";
-    
-    
-/*     String MYSQL_DATABASE_PORT = "48266";
-    String MYSQL_DATABASE_HOST = "52d533b64382ecc670000075-delysid.rhcloud.com";
-    String MYSQL_PASSWORD = "TzW6621jyUrG";
-    String MYSQL_USERNAME = "adminxzEwuJN";
-    String MYSQL_DATABASE_NAME = "ernstunfall";
-    String MYSQL_DATABASE_DRIVER = "com.mysql.jdbc.Driver";  */
-    
-    
-    
-    
-	Connection conn = null;
-	
-	
-	    try {
-                Class.forName("com.mysql.jdbc.Driver");
-            } catch (ClassNotFoundException cnfe) {
-                cnfe.getMessage();
-            }
-	 String url = "";
-  
-                url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
-                conn = DriverManager.getConnection(url, MYSQL_USERNAME, MYSQL_PASSWORD);
-	Statement stmt = conn.createStatement();
-	
-      String sqlStr = "SELECT * FROM unfaelle";
- 
-      // for debugging
-      System.out.println("Query statement is " + sqlStr);
-      			
-
-			
-			ResultSet rset = stmt.executeQuery(sqlStr);
-
-	      while (rset.next()) {
-        Double latitude = rset.getDouble("GPS_Lat");
-		Double longitude = rset.getDouble("GPS_Long");
-		
-		out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
-		}
-	  
-	  
-	  
+       out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
 	  
 	  //rset.close();
       stmt.close();

@@ -36,15 +36,6 @@ public class QuerySubmitter {
                 url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
                 try {
 					conn = DriverManager.getConnection(url, MYSQL_USERNAME, MYSQL_PASSWORD);
-//					stmt = conn.createStatement();
-//					
-//					String sqlStr = "SELECT * FROM unfaelle";
-//					
-//					// for debugging
-//					System.out.println("Query statement is " + sqlStr);
-//					rset = stmt.executeQuery(sqlStr);
-//					
-//
 //					  
 //					  rset.close();
 //				      stmt.close();
@@ -69,6 +60,14 @@ public class QuerySubmitter {
     	
     }
     
+    
+    public ResultSet displayAllAccidents(){
+    	
+    	String sql = "SELECT GPS_Long, GPS_Lat FROM unfaelle";
+    	return submitQuery(sql);
+    	
+    }
+    
     public ResultSet submitQuery(String queryString){
     	
     	
@@ -89,6 +88,15 @@ public class QuerySubmitter {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			  try {
+				rset.close();
+				stmt.close();
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		return rset;
