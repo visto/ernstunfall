@@ -2,7 +2,7 @@
  <%@ page import = "de.tub.openbigdata.conn.*" %>
  <% 
  QuerySubmitter queryMan = new QuerySubmitter();
- ResultSet rset = queryMan.getFilteredAccidents(request.getParameter("range"), request.getParameter("years"));
+ ResultSet rset = queryMan.getFilteredAccidents(request.getParameter("range"), request.getParameter("years"), request.getParameter("participant"));
  out.println("hideRestOfMarkers('');");
  while(rset.next()){
 

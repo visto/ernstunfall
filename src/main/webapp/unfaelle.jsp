@@ -98,7 +98,7 @@ function filterAccidents(){
 
 	 
 	    $.ajax({
-            url: "filteredRequest.jsp?range="+$( "#amount" ).val()+"&years="+ $( "#selectable").find($(".ui-selected")).map(function() {return $(this).text();}).toArray().join("_"),
+            url: "filteredRequest.jsp?range="+$( "#amount" ).val()+"&years="+ $( "#selectable").find($(".ui-selected")).map(function() {return $(this).text();}).toArray().join("_")+"&participant=" + $("#participant").val(),
             success: function(data){
                 eval(data);
              }
@@ -240,6 +240,28 @@ function showAll(){
 </ol>   
 </td>
 </tr>
+
+<tr>
+<td>
+ <BR>
+ 
+ <label for="">Beteiligung:</label>
+ <BR>
+<select id="participant" onChange="javascript:filterAccidents();">
+  <option value=''">Egal</option>
+  <option value='Bus'">Bus</option>
+  <option value='Fu'">Fu</option>
+  <option value='Lkw'">Lkw</option>
+  <option value='mot. Zweirad'">mot. Zweirad</option>
+  <option value='Pkw'">Pkw</option>
+  <option value='Pkw mit Anh'">Pkw mit Anh</option>
+  <option value='Radfahrer'">Radfahrer</option>
+  <option value='sonstiges Fahrzeug'">sonstiges Fahrzeug</option>
+  
+</select>
+</td>
+</tr>
+
 </table>
 <div id="map-canvas"></div>
 </body>

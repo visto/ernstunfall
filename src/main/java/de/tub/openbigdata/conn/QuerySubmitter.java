@@ -122,7 +122,7 @@ public class QuerySubmitter {
 
     
     
-    public synchronized ResultSet getFilteredAccidents(String rangeString, String years){
+    public synchronized ResultSet getFilteredAccidents(String rangeString, String years, String participant){
     	
     	String[] range = rangeString.split(" - ");
     	String begin = range[0];
@@ -134,7 +134,7 @@ public class QuerySubmitter {
     	String sqlStr = "SELECT * FROM unfaelle WHERE Uhrzeit2 > '" + begin + "' AND Uhrzeit2 < '" + end + "'";
     	
     	for (int i = 0; i < yearsArr.length; i++) {
-    		if(i == 0){
+    		if(i == 0 && yearsArr.length > 0){
     			sqlStr+= " AND (YEAR(Datum)='"+ yearsArr[i] +"'";
 				if(yearsArr.length == 1) sqlStr += ")";
     		} else {
@@ -143,6 +143,10 @@ public class QuerySubmitter {
 				if(i == (yearsArr.length - 1)) sqlStr += ")";
 			}
 		}
+    	
+    	if(!participant.equals("")){
+    		sqlStr+= " AND VK_Beteiligung = " + participant;
+    	}
     	
     	return submitQuery(sqlStr);
     	
