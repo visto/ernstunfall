@@ -64,7 +64,7 @@ public class QuerySubmitter {
     
     public synchronized ResultSet displayAllAccidents(){
     	
-    	String sql = "SELECT * FROM unfaelle";
+    	String sql = "SELECT GPS_Long, GPS_Lat FROM unfaelle";
     	return submitQuery(sql);
     	
     }

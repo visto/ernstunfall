@@ -10,11 +10,8 @@
 	  		  longitude = rset.getDouble("GPS_Long"); 
   		}
 	   out.println("hideRestOfMarkers('');");
+	   /* out.println("hideRestOfMarkers('');"); */
        out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
-	  
-	  //rset.close();
-/*       stmt.close();
-      conn.close(); */
 	  
   %>
   
