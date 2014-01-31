@@ -3,16 +3,18 @@
   <%
        QuerySubmitter queryMan = new QuerySubmitter();
        ResultSet rset = queryMan.displayAllAccidents();
+       Double latitude = 0.0;
+       Double longitude = 0.0;
 	   while (rset.next()) {
-	          Double latitude = rset.getDouble("GPS_Lat");
-	  		  Double longitude = rset.getDouble("GPS_Long"); 
+	          latitude = rset.getDouble("GPS_Lat");
+	  		  longitude = rset.getDouble("GPS_Long"); 
   		}
 	   out.println("hideRestOfMarkers('');");
        out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
 	  
 	  //rset.close();
-      stmt.close();
-      conn.close();
+/*       stmt.close();
+      conn.close(); */
 	  
   %>
   

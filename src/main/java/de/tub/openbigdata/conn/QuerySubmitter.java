@@ -12,15 +12,15 @@ public class QuerySubmitter {
     String MYSQL_DATABASE_DRIVER = "com.mysql.jdbc.Driver";
     
     
-/*     String MYSQL_DATABASE_PORT = "48266";
-    String MYSQL_DATABASE_HOST = "52d533b64382ecc670000075-delysid.rhcloud.com";
-    String MYSQL_PASSWORD = "TzW6621jyUrG";
-    String MYSQL_USERNAME = "adminxzEwuJN";
-    String MYSQL_DATABASE_NAME = "ernstunfall";
-    String MYSQL_DATABASE_DRIVER = "com.mysql.jdbc.Driver";  */
-    
-    
-    public Connection getConnection(){
+//    String MYSQL_DATABASE_PORT = "48266";
+//    String MYSQL_DATABASE_HOST = "52d533b64382ecc670000075-delysid.rhcloud.com";
+//    String MYSQL_PASSWORD = "TzW6621jyUrG";
+//    String MYSQL_USERNAME = "adminxzEwuJN";
+//    String MYSQL_DATABASE_NAME = "ernstunfall";
+//    String MYSQL_DATABASE_DRIVER = "com.mysql.jdbc.Driver";  
+//    
+
+    public synchronized Connection getConnection(){
     	
     	Connection conn = null;
 //    	ResultSet rset = null;
@@ -33,9 +33,10 @@ public class QuerySubmitter {
             }
 			String url = "";
   
-                url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
-                try {
-					conn = DriverManager.getConnection(url, MYSQL_USERNAME, MYSQL_PASSWORD);
+            url = "jdbc:mysql://" + MYSQL_DATABASE_HOST + ":" + MYSQL_DATABASE_PORT + "/" + MYSQL_DATABASE_NAME;
+            try {
+				conn = DriverManager.getConnection(url, MYSQL_USERNAME, MYSQL_PASSWORD);
+				
 //					  
 //					  rset.close();
 //				      stmt.close();
@@ -61,14 +62,14 @@ public class QuerySubmitter {
     }
     
     
-    public ResultSet displayAllAccidents(){
+    public synchronized ResultSet displayAllAccidents(){
     	
-    	String sql = "SELECT GPS_Long, GPS_Lat FROM unfaelle";
+    	String sql = "SELECT * FROM unfaelle";
     	return submitQuery(sql);
     	
     }
     
-    public ResultSet submitQuery(String queryString){
+    public synchronized ResultSet submitQuery(String queryString){
     	
     	
     	ResultSet rset = null;
@@ -89,21 +90,16 @@ public class QuerySubmitter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
-			  try {
-				rset.close();
-				stmt.close();
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
+			
+			
 		}
 		
 		return rset;
     }
 
     
-    public ResultSet getAccidentsForTimeRange(String rangeString){
+    public synchronized ResultSet getAccidentsForTimeRange(String rangeString){
     	    	
     	String[] range = rangeString.split(" - ");
     	String begin = range[0];
@@ -116,7 +112,7 @@ public class QuerySubmitter {
     }
     
     
-    public ResultSet getAccidentsForYear(String year){
+    public synchronized ResultSet getAccidentsForYear(String year){
 
     	String sqlStr = "SELECT * FROM unfaelle WHERE  YEAR(Datum)='"+ year +"'";
     	return submitQuery(sqlStr);
@@ -126,7 +122,7 @@ public class QuerySubmitter {
 
     
     
-    public ResultSet getFilteredAccidents(String rangeString, String years){
+    public synchronized ResultSet getFilteredAccidents(String rangeString, String years){
     	
     	String[] range = rangeString.split(" - ");
     	String begin = range[0];
