@@ -24,6 +24,17 @@
 	  #selectable .ui-selected { background: #F39814; color: white; }
 	  #selectable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
 	  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+		      
+		table
+		{
+			float:left; margin-right:20px
+		}
+		
+		td{
+		border:1px solid black;
+		}
+		</style>
+      
       
     </style>
 
@@ -34,20 +45,20 @@
     </script>
     <script type="text/javascript">
     var visualization;
-var map;
-var service;
-var infowindow;
-var berlin;
-function initialize() {
-  berlin = new google.maps.LatLng(52.512061800000, 13.321974500000);
-
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-      center: berlin,
-      zoom: 17,
-	  mapTypeId: google.maps.MapTypeId.SATELLITE
-    });
-
-}
+	var map;
+	var service;
+	var infowindow;
+	var berlin;
+	function initialize() {
+	  berlin = new google.maps.LatLng(52.512061800000, 13.321974500000);
+	
+	  map = new google.maps.Map(document.getElementById('map-canvas'), {
+	      center: berlin,
+	      zoom: 17,
+		  mapTypeId: google.maps.MapTypeId.SATELLITE
+	    });
+	
+	}
 
 
 function hideRestOfMarkers(markersToDisplay){
@@ -91,8 +102,29 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   <script>
 
+  
+  $( document ).ready(function() {
+  $("#amount" ).val("0:00 -  23:59" );
+  
 
-
+  $("#activateTimeRange").change(function() {
+      if(this.checked) {
+		
+    	  $( "#amount" ).val("10:30 - 12:59");
+    	  $("#sliderdiv").show();
+      
+      }else{
+    	  
+    	  $("#amount" ).val("0:00 -  23:59" );
+    	  $("#sliderdiv").hide();
+    	  
+      }
+  });
+  
+  
+	});
+  
+  
   
 function filterAccidents(){
 
@@ -118,8 +150,6 @@ function showAll(){
 
 	
 }
-
-  
 
   
   
@@ -176,7 +206,7 @@ function showAll(){
       }
     });
     
-   $( "#amount" ).val("6:00 - 7:59" );
+   $( "#amount" ).val("0:00 -  23:59" );
    filterAccidents();
   });
   
@@ -208,7 +238,7 @@ function showAll(){
 <!--   <h3>by Viktor Stoitschev, Jakob und Mandy</h3> -->
   
 
-<table style="float:left;">
+<table cellpadding="10">
 
 <tr>
 <td>
@@ -219,11 +249,16 @@ function showAll(){
   <input type="button" value="Verstecken" onclick="hideRestOfMarkers('')" id="showALl" style="border:0; color:#f6931f; font-weight:bold;">	
 </p>
 
+</td>
+</tr>
+<tr>
+<td>
+<input id="activateTimeRange" type="checkbox" name="fulltime" value="activateTimeRange">Zeitbereich ausw&aumlhlen<br>
 <p>
   <label for="amount">Uhrzeit:</label>
   <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
 </p> 
-<div style="width: 200px">
+<div id="sliderdiv" style="width: 200px; display:none">
 <div id="slider-range-max"></div>
 </div>
 </td>
@@ -236,14 +271,13 @@ function showAll(){
   <li class="ui-widget-content">2009</li>
   <li class="ui-widget-content">2010</li>
   <li class="ui-widget-content">2011</li>
-  <li class="ui-widget-content">2012</li>
+  <li class="ui-widget-content ui-selected">2012</li>
 </ol>   
 </td>
 </tr>
 
 <tr>
 <td>
- <BR>
  
  <label for="">Beteiligung:</label>
  <BR>
