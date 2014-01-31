@@ -12,5 +12,9 @@
 	   out.println("hideRestOfMarkers('');");
        out.println("displayAccident(" + String.valueOf(latitude) + ", " + String.valueOf(longitude) + ");");
 	  
+	  //rset.close();
+/*       stmt.close();
+      conn.close(); */
+	  
   %>
   
