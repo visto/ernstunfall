@@ -145,7 +145,7 @@ public class QuerySubmitter {
 		}
     	
     	if(!participant.equals("")){
-    		sqlStr+= " AND VK_Beteiligung = " + participant;
+    		sqlStr+= " AND VK_Beteiligung = '" + participant + "'" ;
     	}
     	
     	return submitQuery(sqlStr);
