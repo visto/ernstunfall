@@ -119,6 +119,8 @@ google.maps.event.addDomListener(window, 'load', initialize);
     	  $("#sliderdiv").hide();
     	  
       }
+      
+      filterAccidents();
   });
   
   
@@ -256,7 +258,7 @@ function showAll(){
 <input id="activateTimeRange" type="checkbox" name="fulltime" value="activateTimeRange">Zeitbereich ausw&aumlhlen<br>
 <p>
   <label for="amount">Uhrzeit:</label>
-  <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;">
+  <input type="text" id="amount" style="border:0; color:#f6931f; font-weight:bold;" readonly>
 </p> 
 <div id="sliderdiv" style="width: 200px; display:none">
 <div id="slider-range-max"></div>
