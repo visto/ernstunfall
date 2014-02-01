@@ -264,7 +264,7 @@ function showAll(){
 	    90,  // pie radius
 	    percentages, // values
 	     {
-	    /*  legend: descriptions */
+	      legend: descriptions
 	     }
 	   );
 	  

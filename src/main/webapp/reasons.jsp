@@ -12,7 +12,7 @@
 		description = description.replace("\"", "");
 		Double percentage = rset.getDouble("percentage");
 		
-		evalthis+= "addToReasons('" + String.valueOf(percentage) + "', '" + String.valueOf(description) + "');";
+		evalthis+= "addToReasons('" + String.valueOf(percentage*100) + "', '" + String.valueOf(description) + "');";
 		
  
  
