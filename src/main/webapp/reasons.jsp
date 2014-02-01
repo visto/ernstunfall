@@ -13,7 +13,7 @@
 		}
 		Double percentage = rset.getDouble("percentage");
 	
-		out.println("addToReasons(" + String.valueOf(percentage) + ", " + String.valueOf(description) + ");");
+		out.println("addToReasons('" + String.valueOf(percentage) + "', '" + String.valueOf(description) + "');");
  
  
 }
