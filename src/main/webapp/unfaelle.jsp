@@ -264,7 +264,7 @@ function showAll(){
 	    90,  // pie radius
 	    percentages, // values
 	     {
-	     legend: descriptions
+	    /*  legend: descriptions */
 	     }
 	   );
 	  
@@ -362,8 +362,8 @@ function showAll(){
 
 </table>
 <div id="map-canvas"></div>
-<div style="border:1px solid black; position:absolute; left:80px; width:400px; height: 200px" id="pie"></div>
-
+<div  id="pie"></div> 
+<!-- style="border:1px solid black; position:absolute; left:80px; width:400px; height: 200px" -->
 </body>
 </html>
   
