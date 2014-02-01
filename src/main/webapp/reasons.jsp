@@ -4,6 +4,7 @@
  QuerySubmitter queryMan = new QuerySubmitter();
  ResultSet rset = queryMan.getReasons();
 
+ String evalthis = "";
  while(rset.next()){
 		String description = rset.getString("Description");
 		if(rset.wasNull()){
@@ -12,11 +13,13 @@
 		
 		description = description.replace("\"", "");
 		Double percentage = rset.getDouble("percentage");
-		out.println("addToReasons('" + String.valueOf(percentage) + "', '" + String.valueOf(description) + "');");
+		
+		evalthis+= "addToReasons('" + String.valueOf(percentage) + "', '" + String.valueOf(description) + "');";
+		
  
  
 }
- 
- out.println("drawPieForReasons()");
+evalthis+="drawPieForReasons();";
+out.println(evalthis);
  
  %>
