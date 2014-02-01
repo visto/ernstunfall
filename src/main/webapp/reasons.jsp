@@ -1,9 +1,7 @@
 <%@ page import = "java.sql.*" %>
  <%@ page import = "de.tub.openbigdata.conn.*" %>
- <% 
- QuerySubmitter queryMan = new QuerySubmitter();
+ <%QuerySubmitter queryMan = new QuerySubmitter();
  ResultSet rset = queryMan.getReasons();
-
  String evalthis = "";
  while(rset.next()){
 		String description = rset.getString("Description");
@@ -20,6 +18,4 @@
  
 }
 evalthis+="drawPieForReasons();";
-out.println(evalthis);
- 
- %>
+out.println(evalthis); %>

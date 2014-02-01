@@ -163,7 +163,7 @@ function showAll(){
     $.ajax({
         url: "displayAll.jsp",
         success: function(data){
-            eval(data);
+            eval(data.replace(/(\r\n|\n|\r)/gm,""));
          }
       });
 
