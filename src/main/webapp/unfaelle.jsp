@@ -135,7 +135,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
   $.ajax({
       url: "reasons.jsp",
       success: function(data){
-          eval(data);
+          eval(data.replace(/(\r\n|\n|\r)/gm,""));
        }
     });
   
@@ -163,7 +163,7 @@ function showAll(){
     $.ajax({
         url: "displayAll.jsp",
         success: function(data){
-            eval(data.replace(/(\r\n|\n|\r)/gm,""));
+            eval(data);
          }
       });
 
