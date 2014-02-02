@@ -13,7 +13,7 @@
 		description = description.replace("\"", "");
 		float percentage = rset.getFloat("percentage");
 		
-		evalthis+= "addToReasons('" + percentage + "', '" + String.valueOf(description) + "');";
+		evalthis+= "addToReasons(" + percentage + ", '" + String.valueOf(description) + "');";
 		
  
  
