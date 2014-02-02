@@ -13,7 +13,7 @@
 		description = description.replace("\"", "");
 		float percentage = rset.getFloat("percentage");
 		
-		evalthis+= "addToReasons('" + String.valueOf(Misc.round(percentage, 2, BigDecimal.ROUND_HALF_UP)) + "', '" + String.valueOf(description) + "');";
+		evalthis+= "addToReasons('" + percentage + "', '" + String.valueOf(description) + "');";
 		
  
  
