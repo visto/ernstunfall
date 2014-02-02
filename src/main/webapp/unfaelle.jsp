@@ -25,9 +25,10 @@
        #map-canvas {
         height: 435px;
        /*  max-width: 600px; */
-        width:800px;
+        width:1000px;
+        position: relative; background-color: rgb(229, 227, 223); overflow: hidden;
       }
-      
+  
 	  #feedback { font-size: 1.4em; }
 	  #selectable .ui-selecting { background: #FECA40; }
 	  #selectable .ui-selected { background: #F39814; color: white; }
@@ -42,6 +43,15 @@
 		
 		#filters td{
 		border:1px solid black;
+		}
+		
+		
+		#pie{
+		
+		padding-top:30px;
+		border:1px solid black;
+		margin-top:20px;
+		
 		}
 		</style>
 
