@@ -57,7 +57,7 @@
 	var infowindow;
 	var berlin;
 	function initialize() {
-	  berlin = new google.maps.LatLng(52.512061800000, 13.321974500000);
+	  berlin = new google.maps.LatLng(52.512620, 13.321855);
 	
 	  map = new google.maps.Map(document.getElementById('map-canvas'), {
 	      center: berlin,
