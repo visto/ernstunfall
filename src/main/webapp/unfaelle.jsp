@@ -23,7 +23,7 @@
       
       
        #map-canvas {
-        height: 435px;
+        height: 455px;
        /*  max-width: 600px; */
         width:1000px;
         position: relative; background-color: rgb(229, 227, 223); overflow: hidden;
@@ -51,7 +51,7 @@
 		padding-top:30px;
 		border:1px solid black;
 		margin-top:20px;
-		height: 342px;
+		height: 220px;
 		
 		}
 		</style>
@@ -378,8 +378,6 @@ function showAll(){
 </td>
 <td>
 <div id="map-canvas"></div>
-</td>
-<td>
 </td>
 </tr>
 </table>
