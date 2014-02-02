@@ -156,7 +156,7 @@ public class QuerySubmitter {
     public ResultSet getReasons(){
     	
     	//SELECT DISTINCT Ursachen1 from unfaelle  where Ursachen1 != 0  UNION ALL SELECT DISTINCT Ursachen2 from unfaelle  where Ursachen2 != 0 UNION ALL SELECT DISTINCT Ursachen3 from unfaelle  where Ursachen3 != 0
-    	String sql = "SELECT Ursachen1, (100*COUNT(Ursachen1)/(select count(*) from unfaelle  where Ursachen1 != 0 AND Ursachen1 is not null)) from unfaelle where Ursachen1 is not null and Ursachen1 != 0 group by Ursachen1;";
+    	String sql = "Select * from (SELECT Ursachen1, (100*COUNT(Ursachen1)/(select count(*) from unfaelle  where Ursachen1 != 0 AND Ursachen1 is not null)) from unfaelle where Ursachen1 is not null and Ursachen1 != 0 group by Ursachen1) tmp LEFT JOIN reasons ON tmp.Ursachen1 = reasons.id;";
     	return submitQuery(sql);
     	
     }
