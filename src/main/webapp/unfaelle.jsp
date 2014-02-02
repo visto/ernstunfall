@@ -51,6 +51,7 @@
 		padding-top:30px;
 		border:1px solid black;
 		margin-top:20px;
+		height: 342px;
 		
 		}
 		</style>
