@@ -13,7 +13,7 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <meta charset="utf-8">
   <style>
-      html, body, #map-canvas {
+      html, body {
         height: 100%;
         margin: 20px;
         padding: 20px;
@@ -23,7 +23,9 @@
       
       
        #map-canvas {
-        height: 45%;
+        height: 435px;
+        max-width: 600px;
+        width:600px;
       }
       
 	  #feedback { font-size: 1.4em; }
@@ -32,18 +34,16 @@
 	  #selectable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
 	  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
 		      
-		table
+		#filters
 		{
-			float:left; margin-right:20px
+			margin-right:20px
 		}
 		
-		td{
+		
+		#filters td{
 		border:1px solid black;
 		}
 		</style>
-      
-      
-    </style>
 
     <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
 	<script type="text/javascript" src="http://www.google.com/jsapi"></script>
@@ -301,7 +301,11 @@ function showAll(){
 <!--   <h3>by Viktor Stoitschev, Jakob und Mandy</h3> -->
   
 
-<table cellpadding="10">
+<table>
+<tr>
+<td>
+
+<table id="filters" cellpadding="10">
 
 <tr>
 <td>
@@ -360,8 +364,16 @@ function showAll(){
 </tr>
 
 </table>
+</td>
+<td>
 <div id="map-canvas"></div>
+</td>
+<td>
 <div  id="pie"></div> 
+</td>
+</tr>
+</table>
+
 <!-- style="border:1px solid black; position:absolute; left:80px; width:400px; height: 200px" -->
 </body>
 </html>

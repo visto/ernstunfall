@@ -23,8 +23,9 @@
       
       
        #map-canvas {
-        height: 400px;
-        max-width: 400px;
+        height: 420px;
+        max-width: 600px;
+        width:600px;
       }
       
 	  #feedback { font-size: 1.4em; }
@@ -33,12 +34,13 @@
 	  #selectable { list-style-type: none; margin: 0; padding: 0; width: 200px; }
 	  #selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
 		      
-		table
+		#filters
 		{
-			float:left; margin-right:20px
+			margin-right:20px
 		}
 		
-		td{
+		
+		#filters td{
 		border:1px solid black;
 		}
 		</style>
@@ -58,7 +60,7 @@
 	var infowindow;
 	var berlin;
 	function initialize() {
-	  berlin = new google.maps.LatLng(52.512061800000, 13.321974500000);
+	  berlin = new google.maps.LatLng(52.512620, 13.321855);
 	
 	  map = new google.maps.Map(document.getElementById('map-canvas'), {
 	      center: berlin,
@@ -302,7 +304,11 @@ function showAll(){
 <!--   <h3>by Viktor Stoitschev, Jakob und Mandy</h3> -->
   
 
-<table cellpadding="10">
+<table>
+<tr>
+<td>
+
+<table id="filters" cellpadding="10">
 
 <tr>
 <td>
@@ -361,9 +367,15 @@ function showAll(){
 </tr>
 
 </table>
+</td>
+<td>
 <div id="map-canvas"></div>
-<div  id="pie" style="float:right"></div> 
-<!-- style="border:1px solid black; position:absolute; left:80px; width:400px; height: 200px" -->
+</td>
+<td>
+<div  id="pie"></div> 
+</td>
+</tr>
+</table>
 </body>
 </html>
   
