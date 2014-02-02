@@ -24,8 +24,8 @@
       
        #map-canvas {
         height: 435px;
-        max-width: 600px;
-        width:600px;
+       /*  max-width: 600px; */
+        width:800px;
       }
       
 	  #feedback { font-size: 1.4em; }
@@ -369,10 +369,10 @@ function showAll(){
 <div id="map-canvas"></div>
 </td>
 <td>
-<div  id="pie"></div> 
 </td>
 </tr>
 </table>
+<div  id="pie"></div> 
 
 <!-- style="border:1px solid black; position:absolute; left:80px; width:400px; height: 200px" -->
 </body>
