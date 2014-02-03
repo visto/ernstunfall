@@ -48,10 +48,14 @@
 		
 		#pie{
 		
-		padding-top:30px;
+		padding-top:15px;
+		padding-bottom:0px;
+		padding-left:30px;
 		border:1px solid black;
 		margin-top:20px;
 		height: 220px;
+		width: 450px;
+		
 		
 		}
 		</style>
@@ -75,7 +79,6 @@
 	      zoom: 17,
 		  mapTypeId: google.maps.MapTypeId.SATELLITE
 	    });
-	
 	}
 
 
