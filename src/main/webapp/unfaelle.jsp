@@ -384,6 +384,7 @@ function showAll(){
 </td>
 </tr>
 </table>
+<h3>Unfallursachen</h3> (nach H&aumlufigkeit)
 <div  id="pie"></div> 
 
 <!-- style="border:1px solid black; position:absolute; left:80px; width:400px; height: 200px" -->
