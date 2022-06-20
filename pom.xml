@@ -63,7 +63,7 @@ jboss-eap-*-maven-repository/org/jboss/spec/jboss-javaee-6.0
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.28</version>
+			<version>8.0.28</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/mysql-connector-java-5.1.28-bin.jar</systemPath>
 		</dependency>	
